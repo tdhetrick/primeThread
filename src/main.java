@@ -10,9 +10,10 @@ public class main {
         //ArrayList<Integer> primes = new ArrayList<>();
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         findPrime[] thd = new findPrime[30];
+        int cores = Runtime.getRuntime().availableProcessors();
         boolean finished = false;
-        int tc = 15;
-        int max = 8000000;
+        int tc = cores * 2;
+        int max = 2000000;
         int start = 2;
         for (int i = 0 ; i < tc; i++){
             int end = start + max/tc;
@@ -23,7 +24,7 @@ public class main {
             start = start + max/tc ;
         }
 
-        System.out.println(thd.length);
+        //System.out.println(thd.length);
 
         while(!finished){
             finished = true;
@@ -51,6 +52,7 @@ public class main {
         }
         System.out.println("Num Primes: "+ total);
         System.out.println("Time elapsed: "+ ((currentTimeMillis() - st)/1000));
+        System.out.println("Prime per mills: "+ (total/(currentTimeMillis() - st)));
 
     }
 
